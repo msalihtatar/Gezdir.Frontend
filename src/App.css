@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.clickableArea-div:hover {
+  color: red; /* Change text color to red on hover */
+  font-weight: bold; /* Add bold font weight on hover */
+  text-decoration: underline; /* Add underline on hover */
+}
+
+.clickableArea-div {
+  cursor: pointer;
+}
