@@ -27,11 +27,13 @@ const PreferencesTable = (props: Props) => {
 
   return (
     <>
-    <h4>BEST PLACES FOR YOUR LOCATION</h4>
+      <h4>BEST PLACES FOR YOUR LOCATION</h4>
 
-    <Stack gap={3}>
-      {preferences?.map(x=><Preference key={x.placeId} preference={x}/>)}
-    </Stack>
+      <Stack gap={3} style={{ maxHeight: "600px", overflow: "auto" }}>
+        {preferences?.map((x) => (
+          <Preference key={x.placeId} preference={x} />
+        ))}
+      </Stack>
     </>
   );
 };
