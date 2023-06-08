@@ -9,8 +9,8 @@ import {
 import { Location as LocationModel } from "../model/Location";
 
 const containerStyle = {
-  width: "800px",
-  height: "800px",
+  width: "700px",
+  height: "600px",
 };
 
 function GoogleMaps({
@@ -28,7 +28,7 @@ function GoogleMaps({
   const [map, setMap] = React.useState<google.maps.Map | null>(null);
   const [infoWindowData, setInfoWindowData] = React.useState<{
     id: number;
-    address: string;
+    address: JSX.Element;
   }>();
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
@@ -36,7 +36,7 @@ function GoogleMaps({
     id: number,
     lat: number,
     lng: number,
-    address: string
+    address: JSX.Element
   ) => {
     map?.panTo({ lat, lng });
     setInfoWindowData({ id, address });
@@ -45,9 +45,9 @@ function GoogleMaps({
 
   const onLoad = React.useCallback(function callback(map: google.maps.Map) {
     // This is just an example of getting and using the map instance!!! don't just blindly copy!
-    const bounds = new window.google.maps.LatLngBounds(myCurrentLocation);
-    map.fitBounds(bounds);
-
+    // const bounds = new window.google.maps.LatLngBounds(myCurrentLocation);
+    // map.fitBounds(bounds);
+    map.setZoom(13)
     setMap(map);
   }, []);
 
@@ -62,14 +62,14 @@ function GoogleMaps({
           {
             elementType: "labels",
             featureType: "poi.business",
-            stylers: [{ visibility: "off" }],
+            stylers: [{ visibility: "off" }]
           },
         ],
       }}
       // clickableIcons={true}
       mapContainerStyle={containerStyle}
       center={myCurrentLocation}
-      zoom={15}
+      zoom={13}
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
@@ -82,7 +82,7 @@ function GoogleMaps({
               -99,
               myCurrentLocation.lat,
               myCurrentLocation.lng,
-              "Current Location"
+              <h3>{"You are Here Now."}</h3>
             );
           }}
         >
@@ -92,7 +92,7 @@ function GoogleMaps({
                 setIsOpen(false);
               }}
             >
-              <h3>{"Current Location"}</h3>
+              <h3>{"You are Here Now."}</h3>
             </InfoWindow>
           )}
         </Marker>
@@ -109,7 +109,7 @@ function GoogleMaps({
                   loc.locationId,
                   loc.xcoordinate,
                   loc.ycoordinate,
-                  "address"
+                  <><h5>{loc.placeName} - {loc.scoreNum}</h5><h6>{loc.explanation}</h6></>
                 );
               }}
             >
@@ -119,7 +119,7 @@ function GoogleMaps({
                     setIsOpen(false);
                   }}
                 >
-                  <h3>{infoWindowData.address}</h3>
+                  {infoWindowData.address}
                 </InfoWindow>
               )}
             </Marker>
@@ -132,4 +132,4 @@ function GoogleMaps({
   );
 }
 
-export default GoogleMaps;
+export default React.memo(GoogleMaps);

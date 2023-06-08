@@ -2,8 +2,9 @@ export type Location = {
     locationId: number,
     xcoordinate : number,
     ycoordinate : number,
-    placeType: number,
+    placeTypeId: number,
+    placeId: number,
     placeName: string,
     explanation: string,
-    score: number
+    scoreNum: number
 }

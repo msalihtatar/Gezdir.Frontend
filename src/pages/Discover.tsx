@@ -4,6 +4,9 @@ import GoogleMaps from "../components/GoogleMaps";
 import { getAllLocations } from "../axios/gezdirAPI";
 import { Location as LocationModel } from "../model/Location";
 import { Console } from "console";
+import { Col, Container, Row } from "react-bootstrap";
+import PreferencesTable from "../components/PreferencesTable";
+import MapFilters from "../components/MapFilters";
 
 type Props = {};
 
@@ -13,13 +16,25 @@ const Discover = (props: Props) => {
   const [location, setLocation] = React.useState<LocationModel[] | undefined>(
     undefined
   );
+  const [filteredLocation, setFilteredLocation] = React.useState<LocationModel[] | undefined>(
+    undefined
+  );
 
-  const [myLocation, setMyLocation] = useState<{lat: number, lng: number} | null>(null)
+  const [myLocation, setMyLocation] = useState<{
+    lat: number;
+    lng: number;
+  } | null>(null);
 
+  const [filtered, setFilter] = useState([1, 2, 3, 4, 5, 6, 7]);
+
+  const filterHandleChange = (val: number[]) => {
+    setFilter(val);
+    setFilteredLocation(location?.filter((x) => val.includes(x.placeTypeId)));
+  };
+  
   const [loading, setLoading] = useState(true);
 
   React.useEffect(() => {
-    
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success, error);
     } else {
@@ -34,8 +49,8 @@ const Discover = (props: Props) => {
     function success(position: any) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-      console.log({lat: latitude, lng: longitude})
-      setMyLocation({lat: latitude, lng: longitude})
+      // console.log({ lat: latitude, lng: longitude });
+      setMyLocation({ lat: latitude, lng: longitude });
     }
     function error() {
       console.log("Unable to retrieve your location");
@@ -47,6 +62,7 @@ const Discover = (props: Props) => {
         .then((x) => {
           if (x.status === 200) {
             setLocation(x.data);
+            setFilteredLocation(x.data);
           } else console.log(x.data);
         })
         .catch((ex) => console.log(ex.message));
@@ -55,8 +71,20 @@ const Discover = (props: Props) => {
 
   return (
     <>
-      {location && myLocation ? (
-        <GoogleMaps markers={location} myCurrentLocation={myLocation} />
+      {location && myLocation && filteredLocation ? (
+        <Container className="pt-3">
+          <Row className="pb-3">
+            <MapFilters filtered={filtered} setFilter={filterHandleChange} />
+          </Row>
+          <Row>
+            <Col>
+              <GoogleMaps markers={filteredLocation} myCurrentLocation={myLocation} />
+            </Col>
+            <Col>
+              <PreferencesTable />
+            </Col>
+          </Row>
+        </Container>
       ) : (
         <div>Yükleniyor</div>
       )}
