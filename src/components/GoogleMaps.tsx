@@ -6,7 +6,7 @@ import {
   useJsApiLoader,
 } from "@react-google-maps/api";
 
-import { Location as LocationModel } from "../model/Location";
+import { LocationDetail} from "../model/LocationDetail";
 
 const containerStyle = {
   width: "700px",
@@ -17,7 +17,7 @@ function GoogleMaps({
   markers,
   myCurrentLocation,
 }: {
-  markers: LocationModel[];
+  markers: LocationDetail[];
   myCurrentLocation: any;
 }) {
   const { isLoaded } = useJsApiLoader({
@@ -76,7 +76,7 @@ function GoogleMaps({
       <>
         <Marker
           position={myCurrentLocation}
-          icon={"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}
+          icon={"https://maps.google.com/mapfiles/ms/icons/red-dot.png"}
           onClick={() => {
             handleMarkerClick(
               -99,
@@ -102,7 +102,7 @@ function GoogleMaps({
           <>
             <Marker
               key={loc.locationId}
-              icon={"http://maps.google.com/mapfiles/ms/icons/green-dot.png"}
+              icon={loc.isSuggested ? "http://maps.google.com/mapfiles/ms/icons/orange-dot.png" : "http://maps.google.com/mapfiles/ms/icons/green-dot.png"}
               position={{ lat: loc.xcoordinate, lng: loc.ycoordinate }}
               onClick={() => {
                 handleMarkerClick(

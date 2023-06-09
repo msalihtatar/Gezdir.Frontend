@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import GoogleMaps from "../components/GoogleMaps";
 import { getAllLocations } from "../axios/gezdirAPI";
-import { Location as LocationModel } from "../model/Location";
-import { Console } from "console";
-import { Col, Container, Row } from "react-bootstrap";
+import { LocationDetail} from "../model/LocationDetail";
+import { Col, Container, Form, Row } from "react-bootstrap";
 import PreferencesTable from "../components/PreferencesTable";
 import MapFilters from "../components/MapFilters";
 
@@ -13,10 +12,10 @@ type Props = {};
 const Discover = (props: Props) => {
   const {} = useParams();
 
-  const [location, setLocation] = React.useState<LocationModel[] | undefined>(
+  const [location, setLocation] = React.useState<LocationDetail[] | undefined>(
     undefined
   );
-  const [filteredLocation, setFilteredLocation] = React.useState<LocationModel[] | undefined>(
+  const [filteredLocation, setFilteredLocation] = React.useState<LocationDetail[] | undefined>(
     undefined
   );
 
@@ -29,7 +28,8 @@ const Discover = (props: Props) => {
 
   const filterHandleChange = (val: number[]) => {
     setFilter(val);
-    setFilteredLocation(location?.filter((x) => val.includes(x.placeTypeId)));
+    // setFilteredLocation(location?.filter((x) => val.includes(x.placeTypeId)));
+    setFilteredLocation(location?.filter((x) => val.includes(x.placeTypeId) && (!isChecked || x.isSuggested)));
   };
   
   const [loading, setLoading] = useState(true);
@@ -58,6 +58,7 @@ const Discover = (props: Props) => {
 
     return () => {
       let allLocations = getAllLocations();
+
       allLocations
         .then((x) => {
           if (x.status === 200) {
@@ -69,19 +70,37 @@ const Discover = (props: Props) => {
     };
   }, []);
 
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleToggle = (checked: any) => {setIsChecked(checked.target.checked);
+    setFilteredLocation(location?.filter((x) => filtered.includes(x.placeTypeId) && (!checked.target.checked || x.isSuggested)));};
+
   return (
     <>
       {location && myLocation && filteredLocation ? (
         <Container className="pt-3">
           <Row className="pb-3">
-            <MapFilters filtered={filtered} setFilter={filterHandleChange} />
+            <Col xs={8}><MapFilters filtered={filtered} setFilter={filterHandleChange} /></Col>
+            <Col xs={4}>
+            <div className="d-flex flex-row-reverse form-control-lg">
+              <span className="me-2 form-control-sm">{"Suggested Place"}</span>
+              <Form.Check
+                type="switch"
+                id="toggle-switch"
+                label=""
+                checked={isChecked}
+                onChange={handleToggle}
+              />
+              <span className="me-2 form-control-sm">{"All Place"}</span>
+            </div>
+            </Col>
           </Row>
           <Row>
             <Col>
               <GoogleMaps markers={filteredLocation} myCurrentLocation={myLocation} />
             </Col>
             <Col>
-              <PreferencesTable />
+              <PreferencesTable locations={filteredLocation}/>
             </Col>
           </Row>
         </Container>
