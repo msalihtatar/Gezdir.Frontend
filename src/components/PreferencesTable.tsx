@@ -8,26 +8,9 @@ import Preference from "./Preference";
 type Props = {locations: LocationDetail[]};
 
 const PreferencesTable = (props: Props) => {
-  // const [preferences, setPreferences] = React.useState<
-  //   LocationDetail[] | undefined
-  // >(undefined);
-
-  // useEffect(() => {
-  //   return () => {
-  //     let allpreferences = getAllLocations();
-  //     allpreferences
-  //       .then((x) => {
-  //         if (x.status === 200) {
-  //           setPreferences(x.data);
-  //         } else console.log(x.data);
-  //       })
-  //       .catch((ex) => console.log(ex.message));
-  //   };
-  // }, []);
-
   return (
     <>
-      <Stack gap={3} style={{ maxHeight: "600px", overflow: "auto" }} className="p-3">
+      <Stack gap={3} style={{ maxHeight: "600px", overflow: "auto" }} className="p-3 pt-1">
         {props.locations?.map((x) => (
           <Preference key={x.placeId} preference={x} />
         ))}

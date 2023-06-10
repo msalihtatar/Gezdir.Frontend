@@ -11,19 +11,27 @@ type Props = { preference: LocationDetail };
 const TypeName = (typeId: number) => {
     switch (typeId) {
         case 1:
-            return "Historical";
+            return "Historical Place";
         case 2:
             return "Restaurant";
+        case 3:
+            return "Cafe / Bar";
+        case 4:
+            return "Coast / Beach";
+        case 5:
+            return "Park";
+        case 6:
+            return "Hotel";
+        case 7:
+            return "Other Type of PlaceS";
         default:
-            return "Undefined";
+            return "Undefined Type of Place";
     }
 }
 
 const Preference = (props: Props) => {
     const navigate = useNavigate();
-    // console.log(props.preference)
     return (
-
         <ModalPopupDiscover placeId={Number(props.preference.placeId)}>
             {(handleShow: any) => (
                 <div className={"d-flex bd-highlight p-2 paper" + (props.preference.isSuggested?" bg-suggested":" bg-light")} onClick={() => handleShow()}>
