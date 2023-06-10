@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import DiscoverDetail from './popups/DiscoverDetail';
+import { Container } from 'react-bootstrap';
 
 function ModalPopup({placeId, children}:{placeId:number, children:any}) {
   const [show, setShow] = useState(false);
@@ -14,9 +15,13 @@ function ModalPopup({placeId, children}:{placeId:number, children:any}) {
     
     {children(() => handleShow())}
 
-      <Modal show={show} onHide={handleClose} className="mx-auto my-5 " style={{ maxWidth: "23rem" }}>
-        <DiscoverDetail placeId={placeId} />
-      </Modal>
+      <Container>
+        <Modal show={show} onHide={handleClose} className="centered-modal" centered>
+            <div className="map-card-border">
+            <DiscoverDetail placeId={placeId} />
+        </div>
+        </Modal>
+        </Container>
     </>
   );
 }

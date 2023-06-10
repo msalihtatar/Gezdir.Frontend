@@ -6,12 +6,17 @@ main {
     background-color: #fa7268;
   }
 
-  .card.map-card {
+  .map-card-border {
     border-radius: 1rem;
-    overflow: clip;
+    overflow: hidden;
     box-shadow: #fa726863  3px 3px 5px;
   }
-  
+  .centered-modal{
+    width: 100%;
+  }
+  .centered-modal > .modal-dialog {
+    max-width: 23rem;
+  }
   
   .card.map-card .living-coral-text {
     color: #fa7268;

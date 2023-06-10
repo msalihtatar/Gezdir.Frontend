@@ -60,7 +60,7 @@ const DiscoverDetail = (props: Props) => {
   }, []);
   
   return (
-      <section >
+      <section>
         <div className="card map-card">
           <div
             id="map-container-google-1"
