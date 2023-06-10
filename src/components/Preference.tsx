@@ -42,7 +42,8 @@ const Preference = (props: Props) => {
                     {props.preference.isSuggested &&
                         <div className="ps-auto align-self-center pe-2">
                             <Badge className="bg-warning"><i className="bi bi-star-fill pe-1"></i>Suggested</Badge>
-                        </div>}
+                        </div>
+                    }
                     <div className="align-self-center">
                         <span className="fw-light text-muted text-8r">Score</span>
                         <h3 placeholder="Score">{props.preference.scoreNum}</h3>

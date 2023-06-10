@@ -15,3 +15,7 @@
     background-color: #fbf5d6;
     background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(241,229,172,0.3) 100%);
 }
+
+.bg-pink{
+    background-color :var(--bs-pink) !important;
+}
