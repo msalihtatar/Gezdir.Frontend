@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import GoogleMaps from "../components/GoogleMaps";
-import { getAllLocations } from "../axios/gezdirAPI";
+import { getAllLocations, getAllLocationsDummy } from "../axios/gezdirAPI";
 import { LocationDetail} from "../model/LocationDetail";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import PreferencesTable from "../components/PreferencesTable";
@@ -57,7 +57,7 @@ const Discover = (props: Props) => {
     }
 
     return () => {
-      let allLocations = getAllLocations();
+      let allLocations = getAllLocationsDummy();//getAllLocations();
 
       allLocations
         .then((x) => {
@@ -83,7 +83,7 @@ const Discover = (props: Props) => {
             <Col xs={8}><MapFilters filtered={filtered} setFilter={filterHandleChange} /></Col>
             <Col xs={4}>
             <div className="d-flex flex-row-reverse form-control-lg">
-              <span className="me-2 form-control-sm">{"Suggested Place"}</span>
+              <span className="me-2 form-control-sm">Suggested Place</span>
               <Form.Check
                 type="switch"
                 id="toggle-switch"
@@ -91,7 +91,7 @@ const Discover = (props: Props) => {
                 checked={isChecked}
                 onChange={handleToggle}
               />
-              <span className="me-2 form-control-sm">{"All Place"}</span>
+              <span className="me-2 form-control-sm">All Place</span>
             </div>
             </Col>
           </Row>

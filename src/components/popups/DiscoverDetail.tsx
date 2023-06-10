@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import "../../css/map.css";
-import { getLocationByPlaceId } from "../../axios/gezdirAPI";
+import { getLocationByPlaceId, getLocationByPlaceIdDummy } from "../../axios/gezdirAPI";
 import { LocationDto } from "../../model/LocationDto";
 import DetailMap from "../DetailMap";
 
@@ -47,22 +47,20 @@ const DiscoverDetail = (props: Props) => {
       console.log("Unable to retrieve your location");
     }
 
-    let locationDetail = getLocationByPlaceId(props.placeId);
+    let locationDetail = getLocationByPlaceIdDummy(props.placeId);
     
     locationDetail
       .then((x) => {
         if (x.status === 200) {
-            console.log(locationDetail);
           setLocationDetail(x.data);
           setTargetLocationLoaded(true);
         } else console.log(x.data);
       })
       .catch((ex) => console.log(ex.message));
   }, []);
-  console.log(myLocationLoaded, targetLocationLoaded);
+  
   return (
-    <div className="container">
-      <section className="mx-auto my-5" style={{ maxWidth: "23rem" }}>
+      <section >
         <div className="card map-card">
           <div
             id="map-container-google-1"
@@ -102,7 +100,6 @@ const DiscoverDetail = (props: Props) => {
                 <h6 className="card-subtitle font-weight-light">
                 {locationDetail?.explanation??"Loading..."}
                 </h6>
-                {/* <h6 className="font-small font-weight-light mt-n1">25 min</h6> */}
               </div>
               <hr />
               <div className="d-flex justify-content-between pt-2 mt-1 text-center text-uppercase living-coral-text">
@@ -127,8 +124,7 @@ const DiscoverDetail = (props: Props) => {
                       <i className="fas fa-map-marker-alt living-coral-text"></i>
                     </th>
                     <td className="pb-3 pt-2">
-                    {/* {locationDetail?.address??"Loading..."} */}
-                    Kazım dirik mahallesi 55. sokak No:25
+                        Kazım dirik mahallesi 55. sokak No:25
                     </td>
                   </tr>
                   <tr className="mt-2">
@@ -152,7 +148,6 @@ const DiscoverDetail = (props: Props) => {
           </div>
         </div>
       </section>
-    </div>
   );
 };
 

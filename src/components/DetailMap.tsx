@@ -15,7 +15,6 @@ const containerStyle = {
 type Props = { markers: LocationModel };
 
 function DetailMap(props: Props) {
-    console.log(props);
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCSm65xpi1A2LkLAFNtkCE9LeorYtg5E9k",
@@ -24,27 +23,16 @@ function DetailMap(props: Props) {
   const [map, setMap] = React.useState<google.maps.Map | null>(null);
 
   const onLoad = React.useCallback(function callback(map: google.maps.Map) {
-    // This is just an example of getting and using the map instance!!! don't just blindly copy!
-    // const bounds = new window.google.maps.LatLngBounds(myCurrentLocation);
-    // map.fitBounds(bounds);
-
     const bounds = new window.google.maps.LatLngBounds({lat :props.markers.myxcoordinate, lng:props.markers.myycoordinate});
     bounds.extend({lat :props.markers.xcoordinate, lng:props.markers.ycoordinate});
-    
-    //({lat: (props.markers.myxcoordinate - props.markers.xcoordinate));, lng: (props.markers.myycoordinate - props.markers.ycoordinate)});
-    
-    // let maxZoomRate = Math.max(Math.abs(props.markers.myxcoordinate - props.markers.xcoordinate), Math.abs(props.markers.myycoordinate - props.markers.ycoordinate)); 
-
-    // console.log(maxZoomRate);
     map?.fitBounds(bounds);
-    // map.setZoom(maxZoomRate / 10);
     setMap(map);
   }, []);
 
   const onUnmount = React.useCallback(function callback(map: google.maps.Map) {
     setMap(null);
   }, []);
-  console.log(isLoaded);
+  
   return isLoaded ? (
     <GoogleMap
       options={{

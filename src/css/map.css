@@ -5,6 +5,13 @@ main {
   .card.map-card .living-coral {
     background-color: #fa7268;
   }
+
+  .card.map-card {
+    border-radius: 1rem;
+    overflow: clip;
+    box-shadow: #fa726863  3px 3px 5px;
+  }
+  
   
   .card.map-card .living-coral-text {
     color: #fa7268;

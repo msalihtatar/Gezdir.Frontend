@@ -54,7 +54,7 @@ function GoogleMaps({
   const onUnmount = React.useCallback(function callback(map: google.maps.Map) {
     setMap(null);
   }, []);
-  console.log(isLoaded);
+
   return isLoaded ? (
     <GoogleMap
       options={{
@@ -82,7 +82,7 @@ function GoogleMaps({
               -99,
               myCurrentLocation.lat,
               myCurrentLocation.lng,
-              <h3>{"You are Here Now."}</h3>
+              <h3>You are Here Now.</h3>
             );
           }}
         >
@@ -92,7 +92,7 @@ function GoogleMaps({
                 setIsOpen(false);
               }}
             >
-              <h3>{"You are Here Now."}</h3>
+              <h3>You are Here Now.</h3>
             </InfoWindow>
           )}
         </Marker>
