@@ -4,6 +4,7 @@ import MainPage from "../pages/MainPage";
 import Discover from "../pages/Discover";
 import Location from "../pages/Location";
 import TopNavbar from "../components/TopNavbar";
+import TestPage from "../pages/Test";
 
 
 function RouterConfig({}) {
@@ -22,6 +23,8 @@ function RouterConfig({}) {
                     <Route path=":id"  element={<MainPage ></MainPage>} />
                 </Route> 
                 <Route path="contact" element={<>Contact</>}>
+                </Route>
+                <Route path="test" element={<TestPage />}>
                 </Route>
             </Routes>
         </BrowserRouter>

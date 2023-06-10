@@ -27,7 +27,7 @@ const PreferencesTable = (props: Props) => {
 
   return (
     <>
-      <Stack gap={3} style={{ maxHeight: "600px", overflow: "auto" }}>
+      <Stack gap={3} style={{ maxHeight: "600px", overflow: "auto" }} className="p-3">
         {props.locations?.map((x) => (
           <Preference key={x.placeId} preference={x} />
         ))}

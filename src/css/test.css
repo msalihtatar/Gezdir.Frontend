@@ -1,0 +1,19 @@
+.item-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .item {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border: 1px solid black;
+  }
+  
+  .gold {
+    background-color: gold;
+  }
+  
+  .regular {
+    background-color: white;
+  }

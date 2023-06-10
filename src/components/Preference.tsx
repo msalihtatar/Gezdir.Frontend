@@ -1,10 +1,23 @@
 import React from "react";
 import { LocationDetail } from "../model/LocationDetail";
-import { Button } from "react-bootstrap";
+import { Badge, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ModalPopupDiscover from "./popups/ModalPopupDiscover";
+import '../css/location.css'
 
 type Props = { preference: LocationDetail };
+
+
+const TypeName = (typeId: number) => {
+    switch (typeId) {
+        case 1:
+            return "Historical";
+        case 2:
+            return "Restaurant";
+        default:
+            return "Undefined";
+    }
+}
 
 const Preference = (props: Props) => {
     const navigate = useNavigate();
@@ -13,16 +26,20 @@ const Preference = (props: Props) => {
 
         <ModalPopupDiscover placeId={Number(props.preference.placeId)}>
             {(handleShow: any) => (
-                // this is a valid React element that uses handleShow
-                <Button
-                    className={props.preference.isSuggested ? "bg-warning border" : "bg-light border text-dark"}
-                    onClick={() => handleShow()}
-                >
-                    <div className="d-flex justify-content-between ps-4 pe-4">
-                        <h4 placeholder="Place Name">{props.preference.placeName}</h4>
-                        <h4 placeholder="Score">{props.preference.scoreNum}</h4>
+                <div className={"d-flex bd-highlight p-2 paper" + (props.preference.isSuggested?" bg-suggested":" bg-light")} onClick={() => handleShow()}>
+                    <div className="text-start  flex-grow-1 bd-highlight">
+                        <h5 placeholder="Place Name">{props.preference.placeName}</h5>
+                        <p className="text-muted mb-0 ps-2">{TypeName(props.preference.placeTypeId)}</p>
                     </div>
-                </Button>
+                    {props.preference.isSuggested &&
+                        <div className="ps-auto align-self-center pe-2">
+                            <Badge className="bg-warning"><i className="bi bi-star-fill pe-1"></i>Suggested</Badge>
+                        </div>}
+                    <div className="align-self-center">
+                        <span className="fw-light text-muted text-8r">Score</span>
+                        <h3 placeholder="Score">{props.preference.scoreNum}</h3>
+                    </div>
+                </div>
             )}
         </ModalPopupDiscover>
 
