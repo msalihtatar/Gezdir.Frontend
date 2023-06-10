@@ -61,7 +61,7 @@ const DiscoverDetail = (props: Props) => {
   
   return (
       <section>
-        <div className="card map-card">
+        <div className="card map-card border-0">
           <div
             id="map-container-google-1"
             className="z-depth-1-half map-container"

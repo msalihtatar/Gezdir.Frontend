@@ -7,7 +7,6 @@ main {
   }
 
   .map-card-border {
-    border-radius: 1rem;
     overflow: hidden;
     box-shadow: #fa726863  3px 3px 5px;
   }
@@ -16,6 +15,10 @@ main {
   }
   .centered-modal > .modal-dialog {
     max-width: 23rem;
+  }
+    .centered-modal > .modal-dialog > .model-content {
+    border: 0.5rem;
+    overflow: hidden;
   }
   
   .card.map-card .living-coral-text {

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import DiscoverDetail from './popups/DiscoverDetail';
+import DiscoverDetail from './DiscoverDetail';
 import { Container } from 'react-bootstrap';
 
-function ModalPopup({placeId, children}:{placeId:number, children:any}) {
+function ModalPopupDiscover({placeId, children}:{placeId:number, children:any}) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -26,4 +26,4 @@ function ModalPopup({placeId, children}:{placeId:number, children:any}) {
   );
 }
 
-export default ModalPopup;
+export default ModalPopupDiscover;
