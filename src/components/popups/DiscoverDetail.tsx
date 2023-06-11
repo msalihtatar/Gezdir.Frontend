@@ -47,7 +47,7 @@ const DiscoverDetail = (props: Props) => {
       console.log("Unable to retrieve your location");
     }
 
-    let locationDetail = getLocationByPlaceIdDummy(props.placeId);
+    let locationDetail = getLocationByPlaceId(props.placeId);
     
     locationDetail
       .then((x) => {

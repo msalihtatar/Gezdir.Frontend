@@ -57,7 +57,7 @@ const Discover = (props: Props) => {
     }
 
     return () => {
-      let allLocations = getAllLocationsDummy();//getAllLocations();
+      let allLocations = getAllLocations();//getAllLocations();
 
       allLocations
         .then((x) => {
