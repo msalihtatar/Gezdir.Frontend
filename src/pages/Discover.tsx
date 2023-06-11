@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import GoogleMaps from "../components/GoogleMaps";
 import { getAllLocations, getAllLocationsDummy } from "../axios/gezdirAPI";
 import { LocationDetail} from "../model/LocationDetail";
-import { Col, Container, Form, Row } from "react-bootstrap";
+import { Col, Container, Form, Row, Stack } from "react-bootstrap";
 import PreferencesTable from "../components/PreferencesTable";
 import MapFilters from "../components/MapFilters";
 
@@ -79,22 +79,24 @@ const Discover = (props: Props) => {
     <>
       {location && myLocation && filteredLocation ? (
         <Container className="pt-3">
-          <Row className="pb-3">
-            <Col xs={8}><MapFilters filter={filter} setFilter={filterHandleChange} /></Col>
-            <Col xs={4}>
-            <div className="d-flex flex-row-reverse form-control-lg">
-              <span className="me-2 form-control-sm">Suggested Place</span>
-              <Form.Check
-                type="switch"
-                id="toggle-switch"
-                label=""
-                checked={isChecked}
-                onChange={handleToggle}
-              />
-              <span className="me-2 form-control-sm">All Place</span>
+          <div className="d-flex p-0 pb-5 pt-5 m-0">
+            <div className="flex-grow-1 text-start" >
+                <MapFilters filter={filter} setFilter={filterHandleChange} />
             </div>
-            </Col>
-          </Row>
+            <div >
+                <div className="d-flex flex-row form-control-lg" style={{paddingTop: "1.2rem",paddingBottom: 0}}>
+                    <span className="me-2 form-control-sm">All</span>
+                    <Form.Check
+                        type="switch"
+                        id="toggle-switch"
+                        label=""
+                        checked={isChecked}
+                        onChange={handleToggle}
+                    />
+                    <span className="me-2 form-control-sm">Suggested</span>
+                </div>
+            </div>
+          </div>
           <Row>
             <Col>
               <GoogleMaps markers={filteredLocation} myCurrentLocation={myLocation} />

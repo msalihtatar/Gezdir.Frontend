@@ -1,9 +1,9 @@
 .chip {
     display: inline-block !important;
-    padding: 0.5rem 1.5rem;
+    padding: 0.5rem 1.3rem;
     margin: 0.5rem 1rem ;
-    border: 1px solid #dee2e6;
-    border-radius: 10rem;
+    border: 0.6px solid #dee2e6;
+    border-radius: 12rem;
     background-color: transparent;
     cursor: pointer; 
     user-select: none;
@@ -21,5 +21,6 @@
   .selected-chip{
     background-color: #0d6efd;
     color: white;
+    border-color: #024cbb;
   }
   
