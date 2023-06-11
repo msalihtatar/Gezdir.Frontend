@@ -24,12 +24,12 @@ const Discover = (props: Props) => {
     lng: number;
   } | null>(null);
 
-  const [filtered, setFilter] = useState([1, 2, 3, 4, 5, 6, 7]);
+  const [filter, setFilter] = useState([true,true,true,true,true,true,true,true]);
 
-  const filterHandleChange = (val: number[]) => {
+  const filterHandleChange = (val: boolean[]) => {
     setFilter(val);
     // setFilteredLocation(location?.filter((x) => val.includes(x.placeTypeId)));
-    setFilteredLocation(location?.filter((x) => val.includes(x.placeTypeId) && (!isChecked || x.isSuggested)));
+    setFilteredLocation(location?.filter((x) => val[x.placeTypeId] && (!isChecked || x.isSuggested)));
   };
   
   const [loading, setLoading] = useState(true);
@@ -73,14 +73,14 @@ const Discover = (props: Props) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleToggle = (checked: any) => {setIsChecked(checked.target.checked);
-    setFilteredLocation(location?.filter((x) => filtered.includes(x.placeTypeId) && (!checked.target.checked || x.isSuggested)));};
+    setFilteredLocation(location?.filter((x) => filter[x.placeTypeId] && (!checked.target.checked || x.isSuggested)));};
 
   return (
     <>
       {location && myLocation && filteredLocation ? (
         <Container className="pt-3">
           <Row className="pb-3">
-            <Col xs={8}><MapFilters filtered={filtered} setFilter={filterHandleChange} /></Col>
+            <Col xs={8}><MapFilters filter={filter} setFilter={filterHandleChange} /></Col>
             <Col xs={4}>
             <div className="d-flex flex-row-reverse form-control-lg">
               <span className="me-2 form-control-sm">Suggested Place</span>

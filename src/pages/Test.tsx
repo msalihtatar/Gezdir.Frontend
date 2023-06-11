@@ -1,7 +1,7 @@
-import React from "react";
-import '../css/test.css'
+import React, { useState } from "react";
+import '../css/test.scss'
 import '../css/location.css'
-import { Badge, Button, Container, Stack } from "react-bootstrap";
+import { Badge, Button, Container, Stack, ToggleButton, ToggleButtonGroup } from "react-bootstrap";
 interface Item {
     id: number;
     placeName: string;
@@ -24,6 +24,19 @@ const TypeName = (typeId: number) => {
             return "Undefined";
     }
 }
+const TypeText = (typeId: number) => {
+    switch (typeId) {
+        case 1:
+            return "historical";
+        case 2:
+            return "restaurant";
+        default:
+            return "undefined";
+    }
+}
+
+const FilterList = ["Historical","Restaurant","Cafe","Other"];
+const Second = ["Suggested"];
 
 const TestPage: React.FC = () => {
     const items = [
@@ -38,13 +51,32 @@ const TestPage: React.FC = () => {
         { id: 9, placeName: "Rio de Janeiro", isSuggested: true, scoreSum: 20, placeTypeId: 2 },
         { id: 10, placeName: "Cape Town", isSuggested: false, scoreSum: 10, placeTypeId: 1 },
     ];
-
+    const [filter, setFilter] = useState<boolean[]>([true,true,true,true]);
+    const handleChange = (index: number) => { filter[index] =! filter[index];setFilter([...filter]);};
+    
     return (
         <Container>
+            <div role="group" aria-labelledby="rank" className="p-2 m-2 border rounded border-secondary">
+                <div className="w-100" >
+
+                    {FilterList.map((elem: string, i: number) => {
+                        return (
+                            <div key={i} className={`form-check chip ${filter[i] ? "selected-chip" : ""}`} onClick={() => handleChange(i)}>
+                                <input className="form-check-input" type="checkbox" value="" id={"chip"+i} defaultChecked={filter[i]} onClick={() => handleChange(i)}/>                                
+                                <label className="form-check-label" htmlFor={"chip"+i}>
+                                    {elem}
+                                </label>
+                            </div>);
+                    })}
+                </div>
+      </div>
             <Stack gap={3} style={{ maxHeight: "600px", overflow: "auto" }} className="p-2">
                 {items.map((item) => (
-                    <div className={"d-flex bd-highlight p-2 paper" + (item.isSuggested?" bg-suggested":" bg-light")}>
-                        <div className="text-start  flex-grow-1 bd-highlight">
+                    
+                    <div key={item.id}
+                        className={"d-flex bd-highlight p-2 paper" + (item.isSuggested?" bg-suggested":" bg-light")}
+                        data-filter={TypeText(item.placeTypeId) + (item.isSuggested?" suggested":"")} >
+                        <div className="text-start flex-grow-1 bd-highlight">
                             <h5 placeholder="Place Name">{item.placeName}</h5>
                             <p className="text-muted mb-0 ps-2">{TypeName(item.placeTypeId)}</p>
                         </div>
@@ -64,3 +96,4 @@ const TestPage: React.FC = () => {
 };
 
 export default TestPage;
+

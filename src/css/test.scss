@@ -1,0 +1,25 @@
+.chip {
+    display: inline-block !important;
+    padding: 0.5rem 1.5rem;
+    margin: 0.5rem 1rem ;
+    border: 1px solid #dee2e6;
+    border-radius: 10rem;
+    background-color: transparent;
+    cursor: pointer; 
+    user-select: none;
+  }
+  .chip label{
+    cursor: pointer; 
+    user-select: none;
+  }
+
+  .chip input {
+    display: none;
+    pointer-events: none;
+  }
+
+  .selected-chip{
+    background-color: #0d6efd;
+    color: white;
+  }
+  

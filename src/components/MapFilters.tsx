@@ -2,41 +2,29 @@ import React, { useState } from "react";
 import { PlaceType } from "../model/PlaceType";
 import { ToggleButton, ToggleButtonGroup } from "react-bootstrap";
 
-type Props = { filtered: number[]; setFilter: Function };
-
+type Props = { filter: boolean[]; setFilter: Function };
+const filterList = ["", "Historical", "Restaurant", "Cafe / Bar", "Coast / Beach", "Park", "Hotel", "Other"];
 const MapFilters = (props: Props) => {
-  const handleChange = (val: number[]) => props.setFilter(val);
+    // const handleChange = (val: number[]) => props.setFilter(val);
 
-  return (
-    <ToggleButtonGroup
-      className="w-100"
-      type="checkbox"
-      value={props.filtered}
-      onChange={handleChange}
-    >
-      <ToggleButton className="bordered border-warning" id="tbg-btn-1" variant="light" value={1}>
-        Historical Place
-      </ToggleButton>
-      <ToggleButton className="bordered border-warning" id="tbg-btn-2" variant="light" value={2}>
-        Restaurant
-      </ToggleButton>
-      <ToggleButton className="bordered border-warning" id="tbg-btn-3" variant="light" value={3}>
-        Cafe
-      </ToggleButton>
-      <ToggleButton className="bordered border-warning" id="tbg-btn-4" variant="light" value={4}>
-        Beach
-      </ToggleButton>
-      <ToggleButton className="bordered border-warning" id="tbg-btn-5" variant="light" value={5}>
-        Park
-      </ToggleButton>
-      <ToggleButton className="bordered border-warning" id="tbg-btn-6" variant="light" value={6}>
-        Hotel
-      </ToggleButton>
-      <ToggleButton className="bordered border-warning" id="tbg-btn-7" variant="light" value={7}>
-        Others
-      </ToggleButton>
-    </ToggleButtonGroup>
-  );
+    const handleChange = (index: number) => { props.filter[index] = !props.filter[index]; props.setFilter([...props.filter]); };
+
+    return (
+        <>
+            {filterList.map((elem: string, i: number) => {
+                if(i===0){
+                    return;
+                }
+                return (
+                    <div key={i} className={`form-check chip ${props.filter[i] ? "selected-chip" : ""}`} onClick={() => handleChange(i)}>
+                        <input className="form-check-input" type="checkbox" value="" id={"chip" + i} defaultChecked={props.filter[i]} onClick={() => handleChange(i)} />
+                        <label className="form-check-label" htmlFor={"chip" + i}>
+                            {elem}
+                        </label>
+                    </div>);
+            })}
+        </>
+    );
 };
 
 export default MapFilters;

@@ -23,7 +23,7 @@ const TypeName = (typeId: number) => {
         case 6:
             return "Hotel";
         case 7:
-            return "Other Type of PlaceS";
+            return "Other Type of Places";
         default:
             return "Undefined Type of Place";
     }
