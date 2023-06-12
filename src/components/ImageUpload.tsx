@@ -1,14 +1,14 @@
 import React, { MouseEventHandler, useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
 import { Button, Stack } from "react-bootstrap";
-import AddImg from "../AddImg.jpg";
+import AddImg from "../resources/AddImg.png";
 import "../css/border.css";
 
-const fileTypes = ["JPG", "PNG", "BMP"];
+const fileTypes = ["JPG", "PNG", "BMP", "JPEG"];
 //npm i --save react-drag-drop-files
 function ImageUpload({file,setFile} : {file:any, setFile:Function}) {
   const [tempUrl, setTempUrl] = useState<any>(null);
-  const handleChange = (f:any) => {
+  const handleChange = (f:File) => {
     setFile({changed:true,img:f});
     setTempUrl(URL.createObjectURL(f));
   };
@@ -16,7 +16,7 @@ function ImageUpload({file,setFile} : {file:any, setFile:Function}) {
     setFile({changed:false,img:null});
     setTempUrl(undefined);
   };
-
+  
   return (
     <FileUploader
       handleChange={handleChange}
@@ -28,13 +28,12 @@ function ImageUpload({file,setFile} : {file:any, setFile:Function}) {
     />
   );
 }
-
 const ChildComponent = (tempUrl: string, removeImg: MouseEventHandler) => (
   <>
     {tempUrl ? (
       <div
-        style={{ height: "25rem" }}
-        className="border border-secondary dashed rounded p-1"
+        style={{ height: "30rem", width:"50rem" }}
+        className="border border-secondary dashed rounded"
       >
         <img
           src={tempUrl}
@@ -53,11 +52,11 @@ const ChildComponent = (tempUrl: string, removeImg: MouseEventHandler) => (
       </div>
     ) : (
       <div
-        style={{ height: "28rem", width: "18rem" }}
-        className="border border-secondary dashed rounded p-1"
+        style={{ height: "30rem", width: "50rem" }}
+        className="border border-secondary dashed rounded"
       >
         <Stack className="align-items-center justify-content-center h-100">
-          <div className="text-center ">Drag the image of<br />the pokemon here.</div>
+          <div className="text-center ">Drag the image of<br />the scene here to create caption.</div>
           <div className="text-center pt-4 pb-4">
             <img
               src={AddImg}
