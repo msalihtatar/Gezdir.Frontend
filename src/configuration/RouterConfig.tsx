@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter, Route, Routes} from "react-router-dom";
 import MainPage from "../pages/MainPage";
 import Discover from "../pages/Discover";
-import Location from "../pages/Location";
 import TopNavbar from "../components/TopNavbar";
 import TestPage from "../pages/Test";
+import Facilator from "../pages/Facilator";
 
 
 function RouterConfig({}) {
@@ -16,11 +16,9 @@ function RouterConfig({}) {
                 </Route> 
                 <Route path="discover" >
                     <Route index element={<Discover></Discover>} /> 
-                    <Route path=":id"  element={<Location ></Location>} />
                 </Route> 
                 <Route path="facilator" >
-                    <Route index element={<MainPage></MainPage>} />
-                    <Route path=":id"  element={<MainPage ></MainPage>} />
+                    <Route index element={<Facilator></Facilator>} />
                 </Route> 
                 <Route path="contact" element={<>Contact</>}>
                 </Route>
