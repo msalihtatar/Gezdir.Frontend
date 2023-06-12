@@ -1,8 +1,8 @@
 import React, { MouseEventHandler, useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
 import { Button, Stack } from "react-bootstrap";
-import AddImg from "../../resource/AddImg.png";
-import "../../border.css";
+import AddImg from "../AddImg.jpg";
+import "../css/border.css";
 
 const fileTypes = ["JPG", "PNG", "BMP"];
 //npm i --save react-drag-drop-files
