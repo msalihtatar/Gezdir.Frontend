@@ -24,8 +24,8 @@ const Facilator = (props: Props) => {
         const formData = new FormData();
         formData.append('file', file);
         var result = getImageCaption(file.name);//"Bu bir deneme yayınıdır."; //postImg(formData).catch(e => console.log("Consumed."));//.then(res => { (console.log(res.status === 201 ? "Success" : res)) });
-        
-        result.then((data)=>console.log("Data:", data)).catch((ex)=>console.log("Exception:", ex));
+        //console.log(result)
+        result.then((data)=>setCaption(data.data)).catch((ex)=>console.log("Exception:", ex));
         return true;
     }
     return false;
