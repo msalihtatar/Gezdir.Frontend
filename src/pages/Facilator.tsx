@@ -1,53 +1,85 @@
-import React, { useEffect } from 'react'
-import { Col, Container, Row } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
-import ImageUpload from '../components/ImageUpload';
-import Keywords from '../components/Keywords';
-import CaptionResult from '../components/CaptionResult';
-import { getImageCaption } from '../axios/gezdirAPI';
+import React, { useEffect } from "react";
+import { Button, Col, Container, Row } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import ImageUpload from "../components/ImageUpload";
+import Keywords from "../components/Keywords";
+import CaptionResult from "../components/CaptionResult";
+import { getImageCaption, getObjectDetection } from "../axios/gezdirAPI";
+import TextToSpeech from "../components/TextToSpeech";
 
-type Props = {}
+type Props = {};
 
 const Facilator = (props: Props) => {
-
-  const [keywords, setKeywords] = React.useState(["Fire", "Volcano", "Traffic Light"]);
-  const [caption, setCaption] = React.useState("");
+  const [keywords, setKeywords] = React.useState([
+    "Fire",
+    "Volcano",
+    "Traffic Light",
+  ]);
+  const [caption, setCaption] = React.useState<string | undefined>(" ");
   const [file, setFile] = React.useState({ changed: false, img: null });
+  const [detection, setDetection] = React.useState<string[] | undefined>([]);
 
-  const setFileHandler = (params:{changed:boolean,img:any}) => {
+  const setFileHandler = (params: { changed: boolean; img: any }) => {
     setFile(params);
     fileUpload(params.img);
   };
 
-  const fileUpload = (file:any) => {
+  const fileUpload = (file: any) => {
     if (file) {
-        const formData = new FormData();
-        formData.append('file', file);
-        var result = getImageCaption(file.name);//"Bu bir deneme yayınıdır."; //postImg(formData).catch(e => console.log("Consumed."));//.then(res => { (console.log(res.status === 201 ? "Success" : res)) });
-        //console.log(result)
-        result.then((data)=>setCaption(data.data)).catch((ex)=>console.log("Exception:", ex));
-        return true;
+      const formData = new FormData();
+      formData.append("file", file);
+      setCaption(undefined);
+      setDetection(undefined);
+      var captionResult = getImageCaption(file.name);
+      //console.log(captionResult)
+      captionResult
+        .then((data) => setCaption(data.data))
+        .catch((ex) => console.log("Exception:", ex));
+      var detectionResult = getObjectDetection(file.name);
+      //console.log(detectionResult)
+      detectionResult
+        .then((data) => setDetection(data.data))
+        .catch((ex) => console.log("Exception:", ex));
+      return true;
     }
     return false;
-}
-
+  };
+  const foundKeyword = keywords.filter((x) => detection?.includes(x.toLowerCase())).toString()??"";
   return (
     <Container>
-      <Row className='d-flex justify-content-between pt-5'>
+      <Row className="d-flex justify-content-between pt-5">
         <Col md={8}>
           <ImageUpload file={file} setFile={setFileHandler}></ImageUpload>
         </Col>
-        <Col md={4} className='ps-2' >
+        <Col md={4} className="ps-2">
           <Keywords filter={keywords} setFilter={setKeywords}></Keywords>
+          <div className="pt-5">
+            <TextToSpeech
+              text={
+                detection == undefined
+                  ? "Please wait for object detection for your keywords."
+                  : detection.length > 0
+                  ? foundKeyword.length > 0
+                    ? "We found " + foundKeyword + " in your keywords."
+                    : "Not found any match."
+                  : "Please upload an image"
+              }
+            >
+              <Button variant="success">
+                <i className="bi bi-patch-check-fill pe-3"></i>
+                Check Keywords
+              </Button>
+            </TextToSpeech>
+          </div>
         </Col>
       </Row>
-      <Row className='d-flex justify-content-evenly pt-5 pr-2'>
+      <Row className="d-flex justify-content-evenly pt-5">
         <Col md={12}>
-        <CaptionResult caption={caption}></CaptionResult>
+          <CaptionResult caption={caption}></CaptionResult>
         </Col>
       </Row>
     </Container>
-  )
-}
+  );
+};
 
-export default Facilator
+export default Facilator;

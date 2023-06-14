@@ -3,6 +3,7 @@ import { Button, Card } from "react-bootstrap";
 import PlaceScore from "./PlaceScore";
 import { PlaceDetail } from "../model/PlaceDetail";
 import { getTopPlaces } from "../axios/gezdirAPI";
+import ModalPopupDiscover from "./popups/ModalPopupDiscover";
 
 type Props = {
   placeTypeId: number;
@@ -31,7 +32,14 @@ const TopPlaceCard = (props: Props) => {
         <Card.Title>{props.cardTitle}</Card.Title>
 
         {place?.map((p) => {
-          return <PlaceScore p={p} key={p.placeId}></PlaceScore>;
+          return <ModalPopupDiscover placeId={Number(p.placeId)}>  
+          {(handleShow: any) => (
+
+            <div onClick={() => handleShow()}>
+
+          <PlaceScore p={p} key={p.placeId}></PlaceScore>
+            </div>
+        )}</ModalPopupDiscover>;
         })}
       </Card.Body>
     </Card>
