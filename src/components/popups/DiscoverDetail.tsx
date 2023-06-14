@@ -102,18 +102,18 @@ const DiscoverDetail = (props: Props) => {
                 </h6>
               </div>
               <hr />
-              <div className="d-flex justify-content-between pt-2 mt-1 text-center text-uppercase living-coral-text">
-                <div>
-                  <i className="fas fa-phone fa-lg mb-3"></i>
-                  <p className="mb-0">Call</p>
+              <div className="d-flex justify-content-between pt-2 mt-1 text-center text-uppercase living-coral-text" style={{width:"100%"}}>
+                <div style={{width:"34%"}}>
+                  <i className="bi bi-train-front-fill" style={{color:'#fa7268',border:"5px"}}></i>
+                  <p className="mb-0" style={{fontSize:"12px", fontWeight:"bold"}}>{locationDetail?.transportations.find(x=>x.transportationTypeId === 1)?.explanation??"-"}</p>
                 </div>
-                <div>
-                  <i className="fas fa-cat fa-lg mb-3"></i>
-                  <p className="mb-0">Love</p>
+                <div style={{width:"33%"}}>
+                  <i className="bi bi-bus-front-fill" style={{color:'#fa7268',border:"5px"}}></i>
+                  <p className="mb-0" style={{fontSize:"12px", fontWeight:"bold"}}>{locationDetail?.transportations.find(x=>x.transportationTypeId === 2)?.explanation??"-"}</p>
                 </div>
-                <div>
-                  <i className="far fa-grin-beam-sweat fa-lg mb-3"></i>
-                  <p className="mb-0">Smile</p>
+                <div style={{width:"33%"}}>
+                  <i className="bi bi-tsunami" style={{color:'#fa7268',border:"5px"}}></i>
+                  <p className="mb-0" style={{fontSize:"12px", fontWeight:"bold"}}>{locationDetail?.transportations.find(x=>x.transportationTypeId === 3)?.explanation??"-"}</p>
                 </div>
               </div>
               <hr />
@@ -121,26 +121,11 @@ const DiscoverDetail = (props: Props) => {
                 <tbody>
                   <tr>
                     <th scope="row" className="px-0 pb-3 pt-2">
-                      <i className="fas fa-map-marker-alt living-coral-text"></i>
+                      <i className="bi bi-house-heart" style={{color:'#fa7268',border:"10px", fontSize:"30px", fontWeight:"bold"}}></i>
                     </th>
-                    <td className="pb-3 pt-2">
-                        Kazım dirik mahallesi 55. sokak No:25
+                    <td className="pb-3 pt-2" style={{color:'#fa7268', fontSize:"15px", fontWeight:"bold"}}>
+                      {locationDetail?.address??"Address Not Found."}
                     </td>
-                  </tr>
-                  <tr className="mt-2">
-                    <th scope="row" className="px-0 pb-3 pt-2">
-                      <i className="far fa-clock living-coral-text"></i>
-                    </th>
-                    <td className="pb-3 pt-2">
-                      <span className="deep-purple-text me-2"> Closed</span>{" "}
-                      Opens 10 AM
-                    </td>
-                  </tr>
-                  <tr className="mt-2">
-                    <th scope="row" className="px-0 pb-3 pt-2">
-                      <i className="fas fa-cloud-moon living-coral-text"></i>
-                    </th>
-                    <td className="pb-3 pt-2">Sunny weather tomorrow</td>
                   </tr>
                 </tbody>
               </table>

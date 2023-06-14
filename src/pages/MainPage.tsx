@@ -8,9 +8,19 @@ type Props = {};
 const MainPage = (props: Props) => {
   const navigate = useNavigate();
 
+  const containerStyle = {
+    backgroundImage: "url(/img/saatkulesiizmir.jpg)",
+    backgroundSize: '100% 100%',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    width: '100vw',
+    height: '100vh',
+  };
+
   return (
     <>
-        <div style = {{paddingTop:"6rem",paddingBottom:"4rem"}}>
+        <div style={containerStyle}>
+        <div style = {{paddingTop:"6rem",paddingBottom:"4rem", }}>
           <h1 style={{letterSpacing: "3px"}}>WELCOME TO IZMIR</h1>
           <Button
             variant="warning"
@@ -24,18 +34,19 @@ const MainPage = (props: Props) => {
 
         <div className="d-flex justify-content-around pb-5 pt-5">
           
-          <TopPlaceCard placeTypeId={1} image="/img/museum.jpg" cardTitle="Historical Places"></TopPlaceCard>
-          <TopPlaceCard placeTypeId={2} image="/img/restaurant.jpg" cardTitle="Restaurants"></TopPlaceCard>
-          <TopPlaceCard placeTypeId={3} image="/img/restaurant.jpg" cardTitle="Cafes&Bars"></TopPlaceCard>
+          <TopPlaceCard placeTypeId={1} image="/img/efes.jpg" cardTitle="Historical Places"></TopPlaceCard>
+          <TopPlaceCard placeTypeId={2} image="/img/restaurant2.jpg" cardTitle="Restaurants"></TopPlaceCard>
+          <TopPlaceCard placeTypeId={3} image="/img/cafe.jpg" cardTitle="Cafes&Bars"></TopPlaceCard>
           <TopPlaceCard placeTypeId={4} image="/img/beach.jpg" cardTitle="Costs&Beaches"></TopPlaceCard>
-          <TopPlaceCard placeTypeId={4} image="/img/beach.jpg" cardTitle="Costs&Beaches"></TopPlaceCard>
+          <TopPlaceCard placeTypeId={5} image="/img/park.jpg" cardTitle="Parks"></TopPlaceCard>
 
         </div>
 
-        <div style = {{backgroundImage:'url("/img/saatkulesiizmir.jpg")',backgroundSize:"cover", backgroundRepeat:"no-repeat",
-         opacity: "0.6", position: "absolute", left: "0", top: "0", width: "100%", height: "100%", zIndex:"-1"}}>
+        </div>
 
-      </div>
+        {/* <div style = {{backgroundImage:'url("/img/saatkulesiizmir.jpg")',backgroundSize:"cover", backgroundRepeat:"no-repeat",
+         opacity: "0.6", position: "absolute", left: "0", top: "0", width: "100%", height: "100%", zIndex:"-1"}}>
+      </div> */}
     </>
   );
 };

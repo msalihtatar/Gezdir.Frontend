@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import logo from '../logo.svg';
+import AddImg from "../resources/GezdirLogo6.png";
 import { useNavigate } from 'react-router-dom';
 
 type Props = {}
@@ -13,14 +13,14 @@ export default function TopNavbar({}: Props) {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand  onClick={() => navigate('/')}><img src={logo} className="" alt="logo" height={60} width={60}/></Navbar.Brand>
+        <Navbar.Brand  onClick={() => navigate('/')}><img src={AddImg} className="" alt="logo" height={100} width={100}/></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto gap-3">
-            <Nav.Link onClick={() => navigate('/')}>Gezdir</Nav.Link>
-            <Nav.Link onClick={() => navigate('/discover')}>Discover the City</Nav.Link>
-            <Nav.Link onClick={() => navigate('/facilator')}>Facilator Module</Nav.Link>
-            <Nav.Link onClick={() => navigate('/contact')}>Contact</Nav.Link>
+          <Nav className="me-auto gap-3 bg">
+            <Nav.Link onClick={() => navigate('/')} style={{fontSize:"2rem", fontWeight:"bold", color:"darkslateblue"}}>Gezdir</Nav.Link>
+            <Nav.Link onClick={() => navigate('/discover')} style={{fontSize:"2rem", fontWeight:"bold", color:"darkslategray"}}>Discover the City</Nav.Link>
+            <Nav.Link onClick={() => navigate('/facilator')} style={{fontSize:"2rem", fontWeight:"bold", color:"darkgreen"}}>Facilator Module</Nav.Link>
+            <Nav.Link onClick={() => navigate('/contact')} style={{fontSize:"2rem", fontWeight:"bold", color:"darkcyan"}}>Contact</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
