@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Card, Stack } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import TopPlaceCard from "../components/TopPlaceCard";
+import Carousel from "../components/Carousel";
 
 type Props = {};
 
@@ -36,15 +37,15 @@ const MainPage = (props: Props) => {
             Start the Journey
           </Button>
         </div>
-
+        <div className="d-flex justify-content-center">
+            <Carousel></Carousel>
+        </div>
         <div className="d-flex justify-content-around pb-5 pt-5">
-          
           <TopPlaceCard placeTypeId={1} image="/img/efes.jpg" cardTitle="Historical Places"></TopPlaceCard>
           <TopPlaceCard placeTypeId={2} image="/img/restaurant2.jpg" cardTitle="Restaurants"></TopPlaceCard>
           <TopPlaceCard placeTypeId={3} image="/img/cafe.jpg" cardTitle="Cafes&Bars"></TopPlaceCard>
           <TopPlaceCard placeTypeId={4} image="/img/beach.jpg" cardTitle="Costs&Beaches"></TopPlaceCard>
           <TopPlaceCard placeTypeId={5} image="/img/park.jpg" cardTitle="Parks"></TopPlaceCard>
-
         </div>
         <div style={containerStyle}>
         </div>
