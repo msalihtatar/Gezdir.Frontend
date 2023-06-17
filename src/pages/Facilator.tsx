@@ -75,7 +75,7 @@ const Facilator = (props: Props) => {
                                     </div>: 
                                     <i className="bi bi-patch-check-fill"></i>
                                 }
-                                <span className="ps-1">Check Keywords</span>
+                                <span className="ps-2">Check Keywords</span>
                             </Button>
                             
                         </TextToSpeech>
