@@ -77,7 +77,6 @@ const Facilator = (props: Props) => {
                                 }
                                 <span className="ps-2">Check Keywords</span>
                             </Button>
-                            
                         </TextToSpeech>
                     </div>
                 </Col>

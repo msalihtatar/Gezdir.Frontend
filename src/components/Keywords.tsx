@@ -14,7 +14,14 @@ const Keywords = (props: Props) => {
             <Card className='border-dark bg-light m-1' style={{maxWidth:'50rem'}}>
                 <Card.Body>
                 <InputGroup className="mb-3">
-                    <FormControl type="text" value={keyword} onChange={(e)=>setKeyword(e.target.value)} className="form-control" placeholder="Add New Keyword" aria-label="Add New Keyword" aria-describedby="button-addon2"/>
+                    <FormControl type="text" value={keyword} 
+                    onChange={(e)=>setKeyword(e.target.value)} 
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            props.setFilter([...props.filter,keyword]);setKeyword("")
+                        }
+                    }}
+                    className="form-control" placeholder="Add New Keyword" aria-label="Add New Keyword" aria-describedby="button-addon2"/>
                     <Button variant='outline-primary' type="button" id="button-addon2" onClick={()=>{props.setFilter([...props.filter,keyword]);setKeyword("")}}>Add Keyword</Button>
                 </InputGroup>
                 {props.filter.map((elem: string, i: number) => {

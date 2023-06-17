@@ -33,7 +33,7 @@ const ChildComponent = (tempUrl: string, removeImg: MouseEventHandler) => (
     {tempUrl ? (
       <div
         style={{ height: "30rem", width:"50rem" }}
-        className="border-secondary dashed rounded"
+        className="border-secondary dashed rounded  text-center"
       >
         <img
           src={tempUrl}
