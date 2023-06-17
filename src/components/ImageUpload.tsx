@@ -33,7 +33,7 @@ const ChildComponent = (tempUrl: string, removeImg: MouseEventHandler) => (
     {tempUrl ? (
       <div
         style={{ height: "30rem", width:"50rem" }}
-        className="border border-secondary dashed rounded"
+        className="border-secondary dashed rounded"
       >
         <img
           src={tempUrl}
@@ -53,7 +53,7 @@ const ChildComponent = (tempUrl: string, removeImg: MouseEventHandler) => (
     ) : (
       <div
         style={{ height: "30rem", width: "50rem" }}
-        className="border border-secondary dashed rounded"
+        className="border-secondary dashed rounded"
       >
         <Stack className="align-items-center justify-content-center h-100">
           <div className="text-center ">Drag the image of<br />the scene here to create caption.</div>

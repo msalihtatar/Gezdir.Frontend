@@ -8,6 +8,17 @@
     cursor: pointer; 
     user-select: none;
   }
+  .small-chip {
+    display: inline-flex !important;
+    align-items: center;
+    padding: .2rem .2rem .2rem 1rem;
+    margin: 0.5rem 1rem ;
+    border: 0.6px solid #dee2e6;
+    border-radius: 12rem;
+    background-color: transparent;
+    cursor: pointer; 
+    user-select: none; 
+  }
   .chip label{
     cursor: pointer; 
     user-select: none;
@@ -23,4 +34,6 @@
     color: white;
     border-color: #024cbb;
   }
-  
+  .close-chip-dark{
+    background-color: rgba(0, 0, 0, 0.2) !important;
+  }

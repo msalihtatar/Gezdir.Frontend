@@ -8,18 +8,23 @@ type Props = {};
 const MainPage = (props: Props) => {
   const navigate = useNavigate();
 
-  const containerStyle = {
-    backgroundImage: "url(/img/saatkulesiizmir.jpg)",
+  const containerStyle : React.CSSProperties = {
+    backgroundImage: "url(/img/izmir_new.jpg)",
     backgroundSize: '100% 100%',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    width: '100vw',
-    height: '100vh',
+    position: 'absolute',
+    zIndex:-99,
+    filter:'blur(5px)',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0
   };
 
   return (
     <>
-        <div style={containerStyle}>
+
         <div style = {{paddingTop:"6rem",paddingBottom:"4rem", }}>
           <h1 style={{letterSpacing: "3px"}}>WELCOME TO IZMIR</h1>
           <Button
@@ -41,7 +46,7 @@ const MainPage = (props: Props) => {
           <TopPlaceCard placeTypeId={5} image="/img/park.jpg" cardTitle="Parks"></TopPlaceCard>
 
         </div>
-
+        <div style={containerStyle}>
         </div>
 
         {/* <div style = {{backgroundImage:'url("/img/saatkulesiizmir.jpg")',backgroundSize:"cover", backgroundRepeat:"no-repeat",

@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 
-const TextToSpeech = ({ text, children }) => {
+const TextToSpeech = ({ text, children, lang }) => {
   const [isPaused, setIsPaused] = useState(false);
   const [utterance, setUtterance] = useState(null);
+
 
   useEffect(() => {
     const synth = window.speechSynthesis;
     const u = new SpeechSynthesisUtterance(text);
-
+    u.lang = lang
     setUtterance(u);
     
     return () => {

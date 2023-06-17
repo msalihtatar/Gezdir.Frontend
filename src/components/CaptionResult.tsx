@@ -7,10 +7,10 @@ type Props = { caption: string | undefined };
 
 const CaptionResult = (props: Props) => {
   return (
-    <Card>
+    <Card style={{ borderRadius:'.75rem',overflow:'clip'}}>
       <Card.Body style={{minHeight:"10rem"}}>
-      <TextToSpeech text={props.caption===" " ? ("Please upload an image.") : (props.caption ?? ("Please wait."))} >
-        <Button variant="warning" size="lg" style={{position:"absolute", top:0, right:0, width:"15rem"}}>
+      <TextToSpeech text={props.caption===" " ? ("Please upload an image.") : (props.caption ?? ("Please wait."))} lang={'en'}>
+        <Button variant="warning" size="lg" style={{position:"absolute", top:0, right:0, width:"15rem",borderRadius:0,borderBottomLeftRadius:'.5rem'}}>
         <i className="bi bi-volume-up-fill pe-2"></i>
           Describe the Image 
         </Button>

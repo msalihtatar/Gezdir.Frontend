@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import '../css/test.scss'
+import '../css/chip.css'
 import '../css/location.css'
 import { Badge, Button, Container, Stack, ToggleButton, ToggleButtonGroup } from "react-bootstrap";
 interface Item {
