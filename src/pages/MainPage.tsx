@@ -34,7 +34,7 @@ const MainPage = (props: Props) => {
                     <button type="button" className="discover" role="button" onClick={() => navigate("/discover")}><span className="text">Start the Journey</span></button>
                 </div>
                 <div  className="activity-wrap">
-                    <div className="text-white text-uppercase fw-bold activity" onClick={() => navigate("/activities")}>Check the activities nearby</div>
+                    <div className="text-white text-uppercase fw-bold activity" onClick={() => navigate("/activities")}>Check out the activities nearby</div>
                 </div>
             </div>
 
