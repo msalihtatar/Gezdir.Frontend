@@ -3,6 +3,8 @@ import { Button, Card, Stack } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import TopPlaceCard from "../components/TopPlaceCard";
 import Carousel from "../components/Carousel";
+import OpenWeatherWidget from "../components/OpenWeatherWidget";
+import MainPageTabs from "../components/MainPageTabs";
 
 type Props = {};
 
@@ -27,19 +29,12 @@ const MainPage = (props: Props) => {
     <>
 
         <div style = {{paddingTop:"6rem",paddingBottom:"4rem", }}>
-          <h1 style={{letterSpacing: "3px"}}>WELCOME TO IZMIR</h1>
-          <Button
-            variant="warning"
-            className="text-light mt-4"
-            style={{width:"18rem",height:"4rem",fontSize:"20px"}}
-            onClick={() => navigate("/discover")}
-          >
-            Start the Journey
-          </Button>
+          <h1 className="welcome">WELCOME TO IZMIR</h1>
+          <div className="d-flex justify-content-center pt-5">
+            <button className="discover" role="button" onClick={() => navigate("/discover")}><span className="text">Start the Journey</span></button>
+          </div>
         </div>
-        <div className="d-flex justify-content-center">
-            <Carousel></Carousel>
-        </div>
+
         <div className="d-flex justify-content-around pb-5 pt-5">
           <TopPlaceCard placeTypeId={1} image="/img/efes.jpg" cardTitle="Historical Places"></TopPlaceCard>
           <TopPlaceCard placeTypeId={2} image="/img/restaurant2.jpg" cardTitle="Restaurants"></TopPlaceCard>
