@@ -5,6 +5,7 @@ import Discover from "../pages/Discover";
 import TopNavbar from "../components/TopNavbar";
 import TestPage from "../pages/Test";
 import Facilator from "../pages/Facilator";
+import Activities from "../pages/Activities";
 
 
 function RouterConfig({}) {
@@ -13,6 +14,9 @@ function RouterConfig({}) {
             <TopNavbar />
             <Routes>
                 <Route path="/" element={<MainPage></MainPage>} >
+                </Route> 
+                <Route path="activities" >
+                    <Route index element={<Activities></Activities>} /> 
                 </Route> 
                 <Route path="discover" >
                     <Route index element={<Discover></Discover>} /> 

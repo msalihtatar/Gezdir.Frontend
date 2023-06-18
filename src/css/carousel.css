@@ -1,0 +1,16 @@
+.carousel-button{
+    border: none;
+    /* padding: 3rem; */
+    border-radius: 0.5rem;
+    padding:0.5rem;
+    font-size: 21px;
+    font-weight: 900;
+    color: black;
+    width: 10rem;
+}
+ .carousel-left{
+    left:2rem;
+}
+ .carousel-right{
+    right:2rem;
+}

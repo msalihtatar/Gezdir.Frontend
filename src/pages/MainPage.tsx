@@ -34,7 +34,7 @@ const MainPage = (props: Props) => {
                     <button type="button" className="discover" role="button" onClick={() => navigate("/discover")}><span className="text">Start the Journey</span></button>
                 </div>
                 <div  className="activity-wrap">
-                    <div className="text-white text-uppercase fw-bold activity">Check the activities nearby</div>
+                    <div className="text-white text-uppercase fw-bold activity" onClick={() => navigate("/activities")}>Check the activities nearby</div>
                 </div>
             </div>
 
@@ -44,12 +44,6 @@ const MainPage = (props: Props) => {
                 <TopPlaceCard placeTypeId={3} image="/img/cafe.jpg" cardTitle="Cafes&Bars"></TopPlaceCard>
                 <TopPlaceCard placeTypeId={4} image="/img/beach.jpg" cardTitle="Costs&Beaches"></TopPlaceCard>
                 <TopPlaceCard placeTypeId={5} image="/img/park.jpg" cardTitle="Parks"></TopPlaceCard>
-            </div>
-            <div style={{ backgroundColor: "#fff9" }}>
-                <h5 className="pt-5 text-start">Activities</h5>
-                <div className="d-flex justify-content-center">
-                    <ActivitySlider></ActivitySlider>
-                </div>
             </div>
             <div style={containerStyle} />
             {/* <div style = {{backgroundImage:'url("/img/saatkulesiizmir.jpg")',backgroundSize:"cover", backgroundRepeat:"no-repeat",

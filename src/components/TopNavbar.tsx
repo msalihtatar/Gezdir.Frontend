@@ -19,10 +19,11 @@ export default function TopNavbar({}: Props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto gap-3 bg">
-            <Nav.Link onClick={() => navigate('/')} style={{fontSize:"2rem", fontWeight:"bold", color:"darkslateblue",marginRight:'2rem'}}>Gezdir</Nav.Link>
-            <Nav.Link onClick={() => navigate('/discover')} style={{fontSize:"2rem", fontWeight:"bold", color:"darkslategray",marginRight:'2rem'}}>Discover the City</Nav.Link>
-            <Nav.Link onClick={() => navigate('/facilator')} style={{fontSize:"2rem", fontWeight:"bold", color:"darkgreen",marginRight:'2rem'}}>Facilator Module</Nav.Link>
-            <Nav.Link onClick={() => navigate('/contact')} style={{fontSize:"2rem", fontWeight:"bold", color:"darkcyan",marginRight:'2rem'}}>Contact</Nav.Link>
+            <Nav.Link onClick={() => navigate('/')} style={{fontSize:"1.5rem", fontWeight:"bold", color:"darkslateblue",marginRight:'2rem'}}>Gezdir</Nav.Link>
+            <Nav.Link onClick={() => navigate('/discover')} style={{fontSize:"1.5rem", fontWeight:"bold", color:"darkslategray",marginRight:'2rem'}}>Discover the City</Nav.Link>
+            <Nav.Link onClick={() => navigate('/activities')} style={{fontSize:"1.5rem", fontWeight:"bold", color:"darkslategray",marginRight:'2rem'}}>Activities</Nav.Link>
+            <Nav.Link onClick={() => navigate('/facilator')} style={{fontSize:"1.5rem", fontWeight:"bold", color:"darkgreen",marginRight:'2rem'}}>Facilator Module</Nav.Link>
+            <Nav.Link onClick={() => navigate('/contact')} style={{fontSize:"1.5rem", fontWeight:"bold", color:"darkcyan",marginRight:'2rem'}}>Contact</Nav.Link>
             <Nav.Link className='ps-5'><WeatherWidget></WeatherWidget></Nav.Link>
           </Nav>
         </Navbar.Collapse> 
