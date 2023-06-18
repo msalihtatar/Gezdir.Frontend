@@ -5,7 +5,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import AddImg from "../resources/GezdirLogo6.png";
 import { useNavigate } from 'react-router-dom';
-import OpenWeatherWidget from './OpenWeatherWidget';
+import OpenWeatherWidget from './WeatherWidget';
+import WeatherWidget from './WeatherWidget';
 
 type Props = {}
 
@@ -22,6 +23,7 @@ export default function TopNavbar({}: Props) {
             <Nav.Link onClick={() => navigate('/discover')} style={{fontSize:"2rem", fontWeight:"bold", color:"darkslategray",marginRight:'2rem'}}>Discover the City</Nav.Link>
             <Nav.Link onClick={() => navigate('/facilator')} style={{fontSize:"2rem", fontWeight:"bold", color:"darkgreen",marginRight:'2rem'}}>Facilator Module</Nav.Link>
             <Nav.Link onClick={() => navigate('/contact')} style={{fontSize:"2rem", fontWeight:"bold", color:"darkcyan",marginRight:'2rem'}}>Contact</Nav.Link>
+            <Nav.Link className='ps-5'><WeatherWidget></WeatherWidget></Nav.Link>
           </Nav>
         </Navbar.Collapse> 
       </Container>

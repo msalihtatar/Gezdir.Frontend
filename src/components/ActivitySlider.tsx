@@ -2,9 +2,9 @@ import React from 'react'
 
 type Props = {}
 
-export default function Carousel(props: Props) {
+export default function ActivitySlider(props: Props) {
     return (
-        <div id="carouselactivity" className="carousel slide" style={{height:'10rem', width:'60rem', boxShadow:'5px 5px 2px #0009',overflow:'clip' }}>
+        <div id="carouselactivity" className="carousel slide p-0 m-0" style={{height:'30rem', width:'100%', boxShadow:'5px 5px 2px #0009',overflow:'clip' }}>
             <div className="carousel-inner">
                 <div className="carousel-item active">
                     <img src="/img/saatkulesiizmir.jpg" className="d-block w-100" />
