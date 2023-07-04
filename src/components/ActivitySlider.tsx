@@ -19,9 +19,9 @@ export default class extends React.Component {
             <ButtonNext className='carousel-button carousel-right'>Next &gt;</ButtonNext>
         </div>
         <Slider>
-          <Slide index={0} onClick={() => window.location.href='https://www.google.com'}><img src="/img/slider/img1.jpg" width="100%" style={{height:'70vh', objectFit: "contain"}}></img></Slide>
-          <Slide index={1} onClick={() => window.location.href='https://www.bing.com'}><img src="/img/slider/img2.jpg" width="100%" style={{height:'70vh', objectFit: "contain"}}></img></Slide>
-          <Slide index={2} onClick={() => window.location.href='https://www.yandex.com'}><img src="/img/slider/img3.jpg" width="100%" style={{height:'70vh', objectFit: "contain"}}></img></Slide>
+          <Slide className='pb-5' index={0} onClick={() => window.location.href='https://biletinial.com/en-tr/muzik/cem-adrian-eat'}><img src="/img/slider/cemadrian.jpg" width="100%" style={{height:'70vh', objectFit: "contain"}}></img></Slide>
+          <Slide className='pb-5' index={1} onClick={() => window.location.href='https://biletinial.com/en-tr/muzik/sagopa-kajmer-'}><img src="/img/slider/sagopa.jpg" width="100%" style={{height:'70vh', objectFit: "contain"}}></img></Slide>
+          <Slide className='pb-5' index={2} onClick={() => window.location.href='https://biletinial.com/en-tr/tiyatro/cem-isciler-standp'}><img src="/img/slider/cemisciler.jpeg" width="100%" style={{height:'70vh', objectFit: "contain"}}></img></Slide>
         </Slider>
       </CarouselProvider>
     );

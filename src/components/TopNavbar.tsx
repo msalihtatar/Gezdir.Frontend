@@ -23,7 +23,7 @@ export default function TopNavbar({}: Props) {
             <Nav.Link onClick={() => navigate('/discover')} style={{fontSize:"1.5rem", fontWeight:"bold", color:"darkslategray",marginRight:'2rem',marginTop:'1rem'}}>Discover the City</Nav.Link>
             <Nav.Link onClick={() => navigate('/activities')} style={{fontSize:"1.5rem", fontWeight:"bold", color:"darkslategray",marginRight:'2rem',marginTop:'1rem'}}>Activities</Nav.Link>
             <Nav.Link onClick={() => navigate('/facilator')} style={{fontSize:"1.5rem", fontWeight:"bold", color:"darkgreen",marginRight:'2rem',marginTop:'1rem'}}>Facilator Module</Nav.Link>
-            <Nav.Link onClick={() => navigate('/contact')} style={{fontSize:"1.5rem", fontWeight:"bold", color:"darkcyan",marginRight:'2rem',marginTop:'1rem'}}>Contact</Nav.Link>
+            {/* <Nav.Link onClick={() => navigate('/contact')} style={{fontSize:"1.5rem", fontWeight:"bold", color:"darkcyan",marginRight:'2rem',marginTop:'1rem'}}>Contact</Nav.Link> */}
             <Nav.Link className='ps-5'><WeatherWidget></WeatherWidget></Nav.Link>
           </Nav>
         </Navbar.Collapse> 
